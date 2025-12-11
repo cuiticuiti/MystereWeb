@@ -32,7 +32,8 @@ let discount = 0;
 // =========================
 async function cargarProductos() {
     try {
-        const res = await fetch("http://localhost:8085/api/productos");
+        const res = await fetch("https://mystereweb-production.up.railway.app/api/productos");
+
         products = await res.json();
         renderProducts();
     } catch (e) {
@@ -299,7 +300,8 @@ const envio = document.querySelector('input[name="envio"]:checked')?.value || "r
         price: Math.round(i.price * (1 - discount))
     })) };
 
-    const res = await fetch("http://localhost:8085/api/pay/create", {
+    const res = await fetch("https://mystereweb-production.up.railway.app/api/pay/create", {
+
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -428,7 +430,8 @@ async function enviarPregunta() {
 
     addMessage("Escribiendo...", "bot");
 
-    const res = await fetch("http://localhost:8085/api/bot/consultar", {
+    const res = await fetch("https://mystereweb-production.up.railway.app/api/bot/consultar", {
+
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ pregunta })
